@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { Search, Sparkles, ShieldCheck, ArrowUpDown, Tag, Zap, RefreshCw, AlertCircle } from 'lucide-react';
 import ProductCard from './ProductCard';
 import ProductDetailModal from './ProductDetailModal';
@@ -29,7 +29,6 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
     "Gaming"
   ];
 
-  // Dynamic API Fetch Function
   const loadProducts = useCallback(async () => {
     setIsLoading(true);
     setError(null);
@@ -49,11 +48,10 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
     }
   }, [selectedCategory, searchQuery, sortBy, onlyZeroPercent]);
 
-  // Trigger API query whenever search/filters update
   useEffect(() => {
     const timer = setTimeout(() => {
       loadProducts();
-    }, 200); // 200ms debounce for live search
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [loadProducts]);
@@ -64,18 +62,18 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
   };
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-4 sm:space-y-6 pb-16 sm:pb-12">
       
-      {/* Marketplace Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#4c1d95] via-[#5b21b6] to-[#6320ee] text-white p-6 sm:p-8 shadow-xl shadow-purple-900/10">
-        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Marketplace Hero Banner - Ultra responsive */}
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#4c1d95] via-[#5b21b6] to-[#6320ee] text-white p-4 sm:p-6 md:p-8 shadow-xl shadow-purple-900/10">
+        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-48 sm:w-64 h-48 sm:h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" /> 1Fi Affordability Marketplace
+        <div className="relative z-10 max-w-2xl space-y-2 sm:space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> 1Fi Affordability Marketplace
           </div>
           
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight text-white">
+          <h1 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight text-white">
             Shop Premium Tech on <span className="text-amber-300 underline decoration-amber-400">0% EMI</span>
           </h1>
 
@@ -83,52 +81,52 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
             Use your Mutual Fund credit line to purchase top smartphones, laptops, audio & appliances. <strong className="text-white font-bold">₹0 Down Payment</strong> & no liquidation of your investments.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-white">
-            <div className="flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl border border-white/20">
-              <ShieldCheck className="w-4 h-4 text-emerald-300" />
+          <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-white">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
               <span>Instant Lien Approval</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl border border-white/20">
-              <Zap className="w-4 h-4 text-amber-300" />
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
+              <Zap className="w-3.5 h-3.5 text-amber-300" />
               <span>0% Interest EMIs</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl border border-white/20">
-              <Tag className="w-4 h-4 text-cyan-300" />
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
+              <Tag className="w-3.5 h-3.5 text-cyan-300" />
               <span>Up to ₹7,500 Cashback</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Filter & Search Controls */}
-      <div className="space-y-4">
+      {/* Filter & Search Bar */}
+      <div className="space-y-3 sm:space-y-4">
         
-        {/* Search Input Row matching official 1Fi screenshot */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        {/* Search Input & Sort Controls Row - Responsive stacking */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
           
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input 
               type="text"
               placeholder="Search online stores..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-slate-200 focus:border-[#6320ee] text-sm text-slate-800 placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all font-medium"
+              className="w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 rounded-full bg-white border border-slate-200 focus:border-[#6320ee] text-xs sm:text-sm text-slate-800 placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all font-medium"
             />
             {searchQuery && (
               <button 
                 onClick={() => setSearchQuery("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-700"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-700"
               >
                 Clear
               </button>
             )}
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex items-center gap-2 justify-between sm:justify-end overflow-x-auto">
             <button
               onClick={() => setOnlyZeroPercent(!onlyZeroPercent)}
-              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all border ${
+              className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all border ${
                 onlyZeroPercent 
                   ? 'bg-purple-100 border-[#6320ee] text-[#5b21b6] shadow-sm' 
                   : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
@@ -142,26 +140,26 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
               <select 
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-slate-200 rounded-full px-4 py-2.5 pr-8 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#6320ee] cursor-pointer shadow-sm"
+                className="appearance-none bg-white border border-slate-200 rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 pr-7 sm:pr-8 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#6320ee] cursor-pointer shadow-sm"
               >
                 <option value="recommended">Featured & Popular</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
                 <option value="rating">Top Rated</option>
               </select>
-              <ArrowUpDown className="w-3 h-3 text-slate-400 absolute right-3 pointer-events-none" />
+              <ArrowUpDown className="w-3 h-3 text-slate-400 absolute right-2.5 sm:right-3 pointer-events-none" />
             </div>
           </div>
 
         </div>
 
-        {/* Category Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1">
+        {/* Category Pills - Touch scrolling friendly */}
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none py-1 -mx-1 px-1">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+              className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
                 selectedCategory === cat
                   ? 'bg-[#6320ee] text-white shadow-md shadow-purple-900/15'
                   : 'bg-white hover:bg-slate-50 text-slate-600 border border-slate-200/80'
@@ -174,13 +172,13 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
 
       </div>
 
-      {/* Dynamic API Response State Rendering */}
+      {/* Dynamic API Product Grid - Responsive Grid Columns */}
       {isLoading ? (
         <SkeletonLoader count={8} />
       ) : error ? (
-        <div className="p-8 text-center bg-white rounded-3xl border border-red-200 shadow-sm space-y-3">
+        <div className="p-6 sm:p-8 text-center bg-white rounded-3xl border border-red-200 shadow-sm space-y-3">
           <AlertCircle className="w-8 h-8 text-red-500 mx-auto" />
-          <h3 className="text-base font-bold text-slate-800">{error}</h3>
+          <h3 className="text-sm sm:text-base font-bold text-slate-800">{error}</h3>
           <button 
             onClick={loadProducts}
             className="px-4 py-2 rounded-full bg-purple-100 text-[#5b21b6] font-bold text-xs hover:bg-purple-200 flex items-center gap-1.5 mx-auto"
@@ -189,7 +187,7 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
           </button>
         </div>
       ) : products.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {products.map((product) => (
             <ProductCard 
               key={product.id} 
@@ -199,11 +197,11 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
           ))}
         </div>
       ) : (
-        <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-sm space-y-3">
+        <div className="p-8 sm:p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-sm space-y-3">
           <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center mx-auto text-[#6320ee]">
             <Search className="w-6 h-6" />
           </div>
-          <h3 className="text-lg font-bold text-slate-800">No products found</h3>
+          <h3 className="text-base sm:text-lg font-bold text-slate-800">No products found</h3>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">
             Try adjusting your search query or reset filters to browse all 1Fi marketplace items.
           </p>
