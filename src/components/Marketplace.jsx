@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
-import { Search, Sparkles, ShieldCheck, ArrowUpDown, Tag, Zap, RefreshCw, AlertCircle } from 'lucide-react';
 import ProductCard from './ProductCard';
 import ProductDetailModal from './ProductDetailModal';
 import CheckoutModal from './CheckoutModal';
@@ -64,13 +63,14 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
   return (
     <div className="space-y-4 sm:space-y-6 pb-16 sm:pb-12">
       
-      {/* Marketplace Hero Banner - Ultra responsive */}
+      {/* Marketplace Hero Banner */}
       <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#4c1d95] via-[#5b21b6] to-[#6320ee] text-white p-4 sm:p-6 md:p-8 shadow-xl shadow-purple-900/10">
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-48 sm:w-64 h-48 sm:h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
         
         <div className="relative z-10 max-w-2xl space-y-2 sm:space-y-3">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> 1Fi Affordability Marketplace
+            <i className="bi bi-stars"></i>
+            <span>1Fi Affordability Marketplace</span>
           </div>
           
           <h1 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight text-white">
@@ -82,16 +82,16 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
           </p>
 
           <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-white">
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
+            <div className="flex items-center gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
+              <i className="bi bi-shield-check text-emerald-300 text-sm"></i>
               <span>Instant Lien Approval</span>
             </div>
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
-              <Zap className="w-3.5 h-3.5 text-amber-300" />
+            <div className="flex items-center gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
+              <i className="bi bi-lightning-charge-fill text-amber-300 text-sm"></i>
               <span>0% Interest EMIs</span>
             </div>
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
-              <Tag className="w-3.5 h-3.5 text-cyan-300" />
+            <div className="flex items-center gap-1.5 bg-white/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/20">
+              <i className="bi bi-tag-fill text-cyan-300 text-sm"></i>
               <span>Up to ₹7,500 Cashback</span>
             </div>
           </div>
@@ -101,11 +101,11 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
       {/* Filter & Search Bar */}
       <div className="space-y-3 sm:space-y-4">
         
-        {/* Search Input & Sort Controls Row - Responsive stacking */}
+        {/* Search Input Row matching 1Fi screenshot */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
           
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <i className="bi bi-search absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
             <input 
               type="text"
               placeholder="Search online stores..."
@@ -132,7 +132,7 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
                   : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Zap className={`w-3.5 h-3.5 ${onlyZeroPercent ? 'text-[#6320ee] fill-[#6320ee]' : ''}`} />
+              <i className={`bi bi-lightning-charge-fill ${onlyZeroPercent ? 'text-[#6320ee]' : 'text-slate-400'}`}></i>
               <span>0% EMI Only</span>
             </button>
 
@@ -147,13 +147,13 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
                 <option value="price-high">Price: High to Low</option>
                 <option value="rating">Top Rated</option>
               </select>
-              <ArrowUpDown className="w-3 h-3 text-slate-400 absolute right-2.5 sm:right-3 pointer-events-none" />
+              <i className="bi bi-arrow-down-up text-slate-400 text-xs absolute right-2.5 sm:right-3 pointer-events-none"></i>
             </div>
           </div>
 
         </div>
 
-        {/* Category Pills - Touch scrolling friendly */}
+        {/* Category Pills */}
         <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none py-1 -mx-1 px-1">
           {categories.map((cat) => (
             <button
@@ -172,18 +172,19 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
 
       </div>
 
-      {/* Dynamic API Product Grid - Responsive Grid Columns */}
+      {/* Dynamic API Product Grid */}
       {isLoading ? (
         <SkeletonLoader count={8} />
       ) : error ? (
         <div className="p-6 sm:p-8 text-center bg-white rounded-3xl border border-red-200 shadow-sm space-y-3">
-          <AlertCircle className="w-8 h-8 text-red-500 mx-auto" />
+          <i className="bi bi-exclamation-circle-fill text-2xl text-red-500 mx-auto block"></i>
           <h3 className="text-sm sm:text-base font-bold text-slate-800">{error}</h3>
           <button 
             onClick={loadProducts}
             className="px-4 py-2 rounded-full bg-purple-100 text-[#5b21b6] font-bold text-xs hover:bg-purple-200 flex items-center gap-1.5 mx-auto"
           >
-            <RefreshCw className="w-3.5 h-3.5" /> Retry Fetch
+            <i className="bi bi-arrow-clockwise text-sm"></i>
+            <span>Retry Fetch</span>
           </button>
         </div>
       ) : products.length > 0 ? (
@@ -199,7 +200,7 @@ export default function Marketplace({ userPortfolio, onOrderSuccess }) {
       ) : (
         <div className="p-8 sm:p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-sm space-y-3">
           <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center mx-auto text-[#6320ee]">
-            <Search className="w-6 h-6" />
+            <i className="bi bi-search text-xl"></i>
           </div>
           <h3 className="text-base sm:text-lg font-bold text-slate-800">No products found</h3>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">

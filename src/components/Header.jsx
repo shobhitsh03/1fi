@@ -1,5 +1,4 @@
 import React from 'react';
-import { ShieldCheck, Smartphone, Monitor } from 'lucide-react';
 
 export default function Header({ 
   userPortfolio, 
@@ -23,7 +22,7 @@ export default function Header({
           </div>
         </div>
 
-        {/* Mutual Fund Available Limit Bar - Responsive layout */}
+        {/* Mutual Fund Available Limit Bar - Bootstrap Icons */}
         <div className="hidden sm:flex items-center gap-2 md:gap-3 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white shadow-sm shrink-0">
           <div className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -34,7 +33,8 @@ export default function Header({
             <span className="font-extrabold text-white">₹{userPortfolio.availableCreditLimit.toLocaleString('en-IN')}</span>
           </div>
           <div className="hidden md:flex items-center gap-1 text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-full text-emerald-200 font-bold border border-emerald-400/30">
-            <ShieldCheck className="w-3 h-3" /> Pre-Approved
+            <i className="bi bi-shield-check text-xs"></i>
+            <span>Pre-Approved</span>
           </div>
         </div>
 
@@ -44,14 +44,14 @@ export default function Header({
           <span className="font-extrabold text-white">₹{(userPortfolio.availableCreditLimit / 100000).toFixed(1)}L</span>
         </div>
 
-        {/* Action Controls & Avatar */}
+        {/* Action Controls & Avatar - Bootstrap Icons */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <button
             onClick={() => setDeviceFrame(!deviceFrame)}
             className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 text-[11px] sm:text-xs text-white border border-white/20 transition-all shadow-sm font-medium"
             title="Toggle Mobile Frame / Full Screen view"
           >
-            {deviceFrame ? <Monitor className="w-3.5 h-3.5" /> : <Smartphone className="w-3.5 h-3.5" />}
+            {deviceFrame ? <i className="bi bi-display"></i> : <i className="bi bi-phone"></i>}
             <span className="hidden md:inline">{deviceFrame ? "Full Screen" : "Mobile View"}</span>
           </button>
 

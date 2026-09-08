@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "bootstrap-icons/font/bootstrap-icons.css";
 
 @layer base {
   :root {
@@ -16,13 +17,12 @@
   body {
     background-color: #f7f7fc;
     color: #1e1b4b;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
 }
 
-/* 1Fi Light Theme Custom Styles */
 .fi-card {
   background: #ffffff;
   border-radius: 20px;
@@ -74,7 +74,7 @@
   transform: translateY(-1px);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

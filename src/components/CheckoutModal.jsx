@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { X, ShieldCheck, ArrowRight, CheckCircle2, Lock, Sparkles, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function CheckoutModal({ 
@@ -63,7 +62,7 @@ export default function CheckoutModal({
           onClick={onClose}
           className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors"
         >
-          <X className="w-5 h-5" />
+          <i className="bi bi-x-lg text-sm"></i>
         </button>
 
         {/* Step Progress Bar */}
@@ -77,7 +76,7 @@ export default function CheckoutModal({
                   ? 'bg-purple-100 text-[#5b21b6] border border-purple-200' 
                   : 'bg-slate-100 text-slate-400'
               }`}>
-                {step > i ? <CheckCircle2 className="w-4 h-4" /> : i}
+                {step > i ? <i className="bi bi-check-lg"></i> : i}
               </div>
               {i < 4 && (
                 <div className={`h-1 flex-1 rounded-full ${step > i ? 'bg-[#6320ee]' : 'bg-slate-200'}`}></div>
@@ -133,7 +132,7 @@ export default function CheckoutModal({
               className="w-full py-3 px-4 rounded-xl bg-[#6320ee] hover:bg-[#521ad4] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-900/20 transition-all"
             >
               <span>Continue to Mutual Fund Lien Marking</span>
-              <ArrowRight className="w-4 h-4" />
+              <i className="bi bi-arrow-right text-xs"></i>
             </button>
           </div>
         )}
@@ -162,7 +161,7 @@ export default function CheckoutModal({
             </div>
 
             <div className="p-3 rounded-xl bg-purple-50 border border-purple-200 flex items-start gap-2 text-xs text-slate-600">
-              <Lock className="w-4 h-4 text-[#6320ee] shrink-0 mt-0.5" />
+              <i className="bi bi-lock-fill text-[#6320ee] text-sm shrink-0 mt-0.5"></i>
               <span>
                 1Fi uses RBI-regulated CAMS / KFintech lien marking. You remain 100% owner of all mutual fund units.
               </span>
@@ -175,13 +174,13 @@ export default function CheckoutModal({
             >
               {isProcessing ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <i className="bi bi-arrow-repeat animate-spin text-sm"></i>
                   <span>Verifying Lien Eligibility...</span>
                 </>
               ) : (
                 <>
                   <span>Authorize & E-Sign</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <i className="bi bi-arrow-right text-xs"></i>
                 </>
               )}
             </button>
@@ -218,12 +217,12 @@ export default function CheckoutModal({
             >
               {isProcessing ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <i className="bi bi-arrow-repeat animate-spin text-sm"></i>
                   <span>Confirming Order & Mandate...</span>
                 </>
               ) : (
                 <>
-                  <CheckCircle2 className="w-4 h-4" />
+                  <i className="bi bi-check-circle-fill text-sm"></i>
                   <span>Confirm Purchase with 1Fi EMI</span>
                 </>
               )}
@@ -235,7 +234,7 @@ export default function CheckoutModal({
         {step === 4 && (
           <div className="space-y-5 text-center py-2">
             <div className="w-16 h-16 rounded-full bg-purple-100 text-[#6320ee] border border-purple-300 flex items-center justify-center mx-auto animate-bounce shadow-md">
-              <CheckCircle2 className="w-10 h-10" />
+              <i className="bi bi-check-circle-fill text-3xl text-[#6320ee]"></i>
             </div>
 
             <div>

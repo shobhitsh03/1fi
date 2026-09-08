@@ -6,7 +6,6 @@ import TopBrands from './components/TopBrands';
 import NearbyStores from './components/NearbyStores';
 import Marketplace from './components/Marketplace';
 import { marketplaceApi } from './services/apiService';
-import { TrendingUp, CreditCard, Sparkles } from 'lucide-react';
 
 export default function App() {
   const [activeMainTab, setActiveMainTab] = useState('shop');
@@ -45,7 +44,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f7f7fc] text-slate-800 flex flex-col selection:bg-purple-200 selection:text-[#5b21b6] font-sans antialiased">
       
-      {/* App Container (Supports Mobile Frame wrapper or Fullscreen view) */}
+      {/* App Container */}
       <div className={`mx-auto w-full transition-all duration-300 flex-1 flex flex-col ${
         deviceFrame 
           ? 'max-w-md my-4 sm:my-6 rounded-[36px] sm:rounded-[40px] border-[6px] sm:border-[8px] border-slate-800 bg-[#f7f7fc] shadow-2xl overflow-hidden min-h-[800px] sm:min-h-[850px] ring-1 ring-slate-900/10' 
@@ -59,7 +58,7 @@ export default function App() {
           setDeviceFrame={setDeviceFrame}
         />
 
-        {/* Main Content Body - Bottom padding ensures content is never hidden under floating nav */}
+        {/* Main Content Body */}
         <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6 pb-24 sm:pb-28">
 
           {/* SHOP PAGE ROUTE */}
@@ -97,7 +96,7 @@ export default function App() {
           {activeMainTab === 'home' && (
             <div className="p-6 sm:p-8 text-center space-y-4 max-w-lg mx-auto py-8 sm:py-12 bg-white rounded-3xl border border-slate-100 shadow-sm my-4 sm:my-6">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-purple-50 text-[#5b21b6] border border-purple-100 flex items-center justify-center mx-auto">
-                <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-[#6320ee]" />
+                <i className="bi bi-stars text-2xl text-[#6320ee]"></i>
               </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900">Welcome to 1Fi App</h2>
               <p className="text-xs sm:text-sm text-slate-500">
@@ -123,7 +122,7 @@ export default function App() {
                     <h3 className="text-base sm:text-lg font-extrabold text-slate-900">Active EMI Dues</h3>
                     <p className="text-xs text-slate-500">Track and repay ongoing 1Fi shop installments</p>
                   </div>
-                  <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-[#6320ee]" />
+                  <i className="bi bi-receipt text-2xl text-[#6320ee]"></i>
                 </div>
                 <div className="p-3 sm:p-4 rounded-2xl bg-purple-50/50 border border-purple-100 text-xs flex justify-between items-center">
                   <div>
@@ -139,7 +138,7 @@ export default function App() {
           {activeMainTab === 'limit' && (
             <div className="p-6 sm:p-8 text-center space-y-4 max-w-lg mx-auto py-8 sm:py-12 bg-white rounded-3xl border border-slate-100 shadow-sm my-4 sm:my-6">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-purple-50 text-[#5b21b6] border border-purple-100 flex items-center justify-center mx-auto">
-                <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8 text-[#6320ee]" />
+                <i className="bi bi-graph-up-arrow text-2xl text-[#6320ee]"></i>
               </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900">1Fi Credit Line Limit</h2>
               <p className="text-xs sm:text-sm text-slate-500">
