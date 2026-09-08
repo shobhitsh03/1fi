@@ -12,7 +12,7 @@ export default function App() {
   const [activeShopTab, setActiveShopTab] = useState('marketplace');
   
   const [userPortfolio, setUserPortfolio] = useState({
-    name: "Shobhit Shukla",
+    name: "Hrithik Roshan",
     totalPortfolioValue: 0,
     pledgedValue: 0,
     availableCreditLimit: 0,
@@ -144,9 +144,9 @@ export default function App() {
           {activeMainTab === 'profile' && (
             <div className="p-6 sm:p-8 text-center space-y-4 max-w-lg mx-auto py-8 sm:py-12 bg-white rounded-3xl border border-slate-100 shadow-sm my-4 sm:my-6">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#6320ee] text-white font-black text-lg sm:text-xl flex items-center justify-center mx-auto shadow-md">
-                SS
+                HR
               </div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900">Shobhit Shukla</h2>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900">Hrithik Roshan</h2>
               <p className="text-xs sm:text-sm text-slate-500">+91 98*** **410 • Verified 1Fi Investor</p>
             </div>
           )}

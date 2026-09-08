@@ -43,7 +43,7 @@ export default function Header({ userPortfolio }) {
         {/* User Profile Avatar */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#5b21b6] font-black text-xs flex items-center justify-center shadow-md border-2 border-purple-300 shrink-0">
-            SS
+            HR
           </div>
         </div>
 

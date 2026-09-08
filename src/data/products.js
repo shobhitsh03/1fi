@@ -318,7 +318,7 @@ export const PRODUCTS = [
 ];
 
 export const MOCK_USER_PORTFOLIO = {
-  name: "Shobhit Shukla",
+  name: "Hrithik Roshan",
   totalPortfolioValue: 540000, // Total Mutual Fund investment
   pledgedValue: 120000,
   availableCreditLimit: 250000, // Active Loan Against MF limit
