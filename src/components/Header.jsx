@@ -22,7 +22,7 @@ export default function Header({
           </div>
         </div>
 
-        {/* Mutual Fund Available Limit Bar - Bootstrap Icons */}
+        {/* Mutual Fund Available Limit Bar - Responsive Desktop/Tablet */}
         <div className="hidden sm:flex items-center gap-2 md:gap-3 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white shadow-sm shrink-0">
           <div className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -39,20 +39,26 @@ export default function Header({
         </div>
 
         {/* Mobile Mini MF Limit Badge */}
-        <div className="flex sm:hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 border border-white/20 text-white text-[11px]">
+        <div className="flex sm:hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 border border-white/20 text-white text-[11px] shrink-0">
           <span className="text-purple-200">Credit:</span>
           <span className="font-extrabold text-white">₹{(userPortfolio.availableCreditLimit / 100000).toFixed(1)}L</span>
         </div>
 
-        {/* Action Controls & Avatar - Bootstrap Icons */}
+        {/* Action Controls & Avatar - Ultra Responsive Mobile View Toggle */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <button
             onClick={() => setDeviceFrame(!deviceFrame)}
-            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 text-[11px] sm:text-xs text-white border border-white/20 transition-all shadow-sm font-medium"
-            title="Toggle Mobile Frame / Full Screen view"
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs transition-all duration-200 border shadow-sm ${
+              deviceFrame
+                ? 'bg-white text-[#5b21b6] border-white font-extrabold shadow-md'
+                : 'bg-white/15 hover:bg-white/25 text-white border-white/20 font-medium'
+            }`}
+            title={deviceFrame ? "Switch to Full Screen View" : "Switch to Mobile App View"}
           >
-            {deviceFrame ? <i className="bi bi-display"></i> : <i className="bi bi-phone"></i>}
-            <span className="hidden md:inline">{deviceFrame ? "Full Screen" : "Mobile View"}</span>
+            <i className={`bi ${deviceFrame ? "bi-display" : "bi-phone"} text-xs sm:text-sm`}></i>
+            <span className="inline font-semibold">
+              {deviceFrame ? "Desktop" : "Mobile"}
+            </span>
           </button>
 
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#5b21b6] font-black text-xs flex items-center justify-center shadow-md border-2 border-purple-300 shrink-0">
