@@ -10,7 +10,6 @@ import { marketplaceApi } from './services/apiService';
 export default function App() {
   const [activeMainTab, setActiveMainTab] = useState('shop');
   const [activeShopTab, setActiveShopTab] = useState('marketplace');
-  const [deviceFrame, setDeviceFrame] = useState(false);
   
   const [userPortfolio, setUserPortfolio] = useState({
     name: "Shobhit Shukla",
@@ -42,37 +41,13 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen ${deviceFrame ? 'bg-slate-900 sm:py-8' : 'bg-[#f7f7fc]'} text-slate-800 flex flex-col selection:bg-purple-200 selection:text-[#5b21b6] font-sans antialiased transition-colors duration-300`}>
+    <div className="min-h-screen bg-[#f7f7fc] text-slate-800 flex flex-col selection:bg-purple-200 selection:text-[#5b21b6] font-sans antialiased">
       
-      {/* App Container - Responsive Mobile Frame vs Full Screen */}
-      <div className={`mx-auto w-full transition-all duration-300 flex-1 flex flex-col bg-[#f7f7fc] ${
-        deviceFrame 
-          ? 'max-w-full sm:max-w-[430px] rounded-none sm:rounded-[48px] border-0 sm:border-[10px] border-slate-950 shadow-none sm:shadow-2xl overflow-hidden min-h-screen sm:min-h-[860px] ring-0 sm:ring-1 sm:ring-white/20' 
-          : 'max-w-7xl'
-      }`}>
-
-        {/* Realistic Mobile Status Bar / Dynamic Island for Mobile Frame View on Desktop */}
-        {deviceFrame && (
-          <div className="hidden sm:flex items-center justify-between px-6 pt-3 pb-1 bg-[#4c1d95] text-white text-[11px] font-semibold tracking-tight select-none">
-            <span>9:41</span>
-            {/* Dynamic Island Cutout */}
-            <div className="w-24 h-4 bg-slate-950 rounded-full flex items-center justify-center">
-              <div className="w-2 h-2 rounded-full bg-slate-900 ml-auto mr-2"></div>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs">
-              <i className="bi bi-reception-4"></i>
-              <i className="bi bi-wifi"></i>
-              <i className="bi bi-battery-full text-sm"></i>
-            </div>
-          </div>
-        )}
+      {/* App Container - Naturally responsive across all screen sizes */}
+      <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
 
         {/* Global Header */}
-        <Header 
-          userPortfolio={userPortfolio} 
-          deviceFrame={deviceFrame}
-          setDeviceFrame={setDeviceFrame}
-        />
+        <Header userPortfolio={userPortfolio} />
 
         {/* Main Content Body */}
         <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6 pb-24 sm:pb-28">

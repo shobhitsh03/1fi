@@ -1,10 +1,6 @@
 import React from 'react';
 
-export default function Header({ 
-  userPortfolio, 
-  deviceFrame, 
-  setDeviceFrame 
-}) {
+export default function Header({ userPortfolio }) {
   return (
     <header className="relative bg-gradient-to-r from-[#4c1d95] via-[#5b21b6] to-[#6320ee] text-white px-3 sm:px-6 pt-3 sm:pt-4 pb-5 sm:pb-6 shadow-md rounded-b-[24px] sm:rounded-b-[32px]">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
@@ -44,23 +40,8 @@ export default function Header({
           <span className="font-extrabold text-white">₹{(userPortfolio.availableCreditLimit / 100000).toFixed(1)}L</span>
         </div>
 
-        {/* Action Controls & Avatar - Ultra Responsive Mobile View Toggle */}
+        {/* User Profile Avatar */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          <button
-            onClick={() => setDeviceFrame(!deviceFrame)}
-            className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs transition-all duration-200 border shadow-sm ${
-              deviceFrame
-                ? 'bg-white text-[#5b21b6] border-white font-extrabold shadow-md'
-                : 'bg-white/15 hover:bg-white/25 text-white border-white/20 font-medium'
-            }`}
-            title={deviceFrame ? "Switch to Full Screen View" : "Switch to Mobile App View"}
-          >
-            <i className={`bi ${deviceFrame ? "bi-display" : "bi-phone"} text-xs sm:text-sm`}></i>
-            <span className="inline font-semibold">
-              {deviceFrame ? "Desktop" : "Mobile"}
-            </span>
-          </button>
-
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#5b21b6] font-black text-xs flex items-center justify-center shadow-md border-2 border-purple-300 shrink-0">
             SS
           </div>
